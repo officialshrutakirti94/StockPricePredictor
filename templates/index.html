@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TeslaStockPricePredictor</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+</head>
+<body>
+     <div class="loader" id="loader">
+        <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script> 
+    
+        <dotlottie-player src="https://lottie.host/4b471e4e-505e-4159-af71-28bb062d3268/cCZvUp9cpN.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></dotlottie-player>
+      </div>
+
+    
+    <div class="header"><h1>Stock Price Predictor</h1></div>
+    <div class="container">
+        <div class="tradingview-widget-container">
+            <div class="tradingview-widget-container__widget"></div>
+            <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
+            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
+            {
+            "symbols": [
+              [
+                "NASDAQ:TSLA|1D"
+              ]
+            ],
+            "chartOnly": false,
+            "width": "600",
+            "height": "500",
+            "locale": "en",
+            "colorTheme": "dark",
+            "autosize": true,
+            "showVolume": false,
+            "showMA": false,
+            "hideDateRanges": false,
+            "hideMarketStatus": false,
+            "hideSymbolLogo": false,
+            "scalePosition": "right",
+            "scaleMode": "Normal",
+            "fontFamily": "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif",
+            "fontSize": "10",
+            "noTimeScale": false,
+            "valuesTracking": "1",
+            "changeMode": "price-and-percent",
+            "chartType": "area",
+            "maLineColor": "#2962FF",
+            "maLineWidth": 1,
+            "maLength": 9,
+            "headerFontSize": "medium",
+            "lineWidth": 2,
+            "lineType": 0,
+            "dateRanges": [
+              "1m|30",
+              "3m|60",
+              "12m|1D",
+              "60m|1W",
+              "all|1M"
+            ]
+          }
+            </script>
+        </div>
+        <form class="glassmorphic-form" action="{{ url_for('get_value') }}" method="POST">
+            <h2>Stock Details</h2>
+            <div class="input-group">
+                <label for="open">Open</label>
+                <input type="number" id="open" name="open" placeholder="Enter open value" required>
+            </div>
+            <div class="input-group">
+                <label for="high">High</label>
+                <input type="number" id="high" name="high" placeholder="Enter high value" required>
+            </div>
+            <div class="input-group">
+                <label for="low">Low</label>
+                <input type="number" id="low" name="low" placeholder="Enter low value" required>
+            </div>
+            <div class="input-group">
+                <label for="volume">Volume</label>
+                <input type="number" id="volume" name="volume" placeholder="Enter volume value" required>
+            </div>
+            <button class="button-85" type="submit">Predict</button>
+
+        </form>
+    </div>
+          <script>
+        window.addEventListener('load', () => {
+          setTimeout(() => {
+              document.getElementById('loader').classList.add('hidden');
+          }, 2000);
+      });
+    </script>
+</body>
+</html>

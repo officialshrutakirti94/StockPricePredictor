@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/main.css')}}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Doto:wght@100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="loader" id="loader">
+        <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script> 
+    
+        <dotlottie-player src="https://lottie.host/4b471e4e-505e-4159-af71-28bb062d3268/cCZvUp9cpN.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></dotlottie-player>
+      </div>
+    <video class="background-video" autoplay loop muted>
+        <source src="{{url_for('static', filename='lv_0_20241116141507.mp4')}}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    
+    <div class="header">
+        <div class="main-header">
+        <h1>Tesla Stock Price <br/>
+            Predictor
+        </h1>
+    </div>
+    <div class="bttn">
+         <a href="{{url_for('index')}}"><button class="button-85" role="button">Get Prediction
+            <img src="{{url_for('static',filename='arrow.png')}}">
+        </button></a>
+        </div>
+    </div>
+    <script>
+        window.addEventListener('load', () => {
+          setTimeout(() => {
+              document.getElementById('loader').classList.add('hidden');
+          }, 2000);
+      });
+    </script>
+</body>
+</html>
